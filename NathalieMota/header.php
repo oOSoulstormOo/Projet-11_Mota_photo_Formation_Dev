@@ -8,7 +8,11 @@
   </head>
   <body>
       <header>
-      
+          <!-- Logo -->
+          <div class="header-container">
+                <div class="logo">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/image/Logo.png" alt="Mon Logo">
+                </div>
         
       </header>
 
