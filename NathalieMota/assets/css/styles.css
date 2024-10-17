@@ -1,10 +1,13 @@
-* {
+
+/**************************/
+/******    GLOBAL    ******/
+/**************************/
+* 
+{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
-/****** GLOBAL ******/
 
 /*
     Couleurs
@@ -23,18 +26,69 @@
     --color-white: #FFFFFF;  
 }
 
-li {
+/*
+    BODY
+*/
+
+body 
+{
+    overflow: hidden;
+}
+
+/*
+    Police d'écriture
+*/
+h1 
+{
+    font-family: 'Space mono';
+    font-size: 96px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+h2 
+{
+    font-family: 'Space mono';
+    font-size: 66px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+h3 
+{
+    font-family: 'Space mono';
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.description-photo 
+{
+    font-family: 'Space mono';
+    font-size: 14px;
+    font-weight: 400; 
+}
+
+p 
+{
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 300; 
+}
+
+/*
+List et lien par défault
+*/
+li 
+{
     text-decoration: none;
     display: inline-block;
 }
 
-a {
+a 
+{
     text-decoration: none;
 }
 
-.actif {
-    display: flex;
-}
 
 
 
@@ -78,6 +132,89 @@ a {
     gap: 45px;
 }
 
+/****** BURGER MENU ******/
+/* Bouton */
+.menu-burger {
+    display: none;
+    position: absolute;
+    right: 40px;
+    width: 30px;
+    cursor: pointer;
+    border: none;
+    background-color: var(--color-white);
+}
+/*
+--> span représentant les lignes du menu burger
+*/
+.line {
+    height: 2px;
+    background-color: var(--color-black);
+    display: block;
+    margin: auto;
+    margin-block: 6px;
+    width: 27px;
+}
+/*
+--> 1ere ligne
+*/
+.menu-burger .line__1 {
+    position: relative;
+    transform: translateY(0px) rotate(0deg);
+    transition: 0.3s ease-in-out;
+}
+.menu-burger .line__1.animated {
+    transform: translateY(8px) rotate(225deg);
+    transition: 0.3s ease-in-out;
+}
+/*
+--> 2ème ligne
+*/
+.menu-burger .line__2 {
+    position: relative;
+    transform: translateY(0px);
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+}
+.menu-burger .line__2.animated {
+    transform: translateY(8px);
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+/*
+--> 3ème ligne
+*/
+.menu-burger .line__3 {
+    position: relative;
+    transform: translateY(0px) rotate(0deg);
+    transition: 0.3s ease-in-out;
+}
+.menu-burger .line__3.animated {
+    transform: translateY(-8px) rotate(135deg);
+    transition: 0.3s ease-in-out;
+}
+
+/* Menu de navigation mobile */
+
+#menu-menu-principal-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+#menu-menu-principal-1 li {
+    text-align: center;
+}
+
+#menu-menu-principal-1 li a {
+    font-family: 'Space mono';
+    font-size: 44px;
+    text-transform: uppercase;
+    color: var(--color-white);
+}
+
+#menu-menu-principal-1 li a:hover {
+    text-decoration: underline;
+}
 
 /****** FOOTER *******/
 
@@ -163,7 +300,37 @@ a {
     #menu-menu-principal {
         display: none;
     }
+
+    .menu-burger {
+        display: flex;
+    }
+    
+    /* Menu burger ( sous 768px il devient visible ) */
+    .menu-burger {
+        display: inline-block;
+    }
+
+    .burger-open-menu {
+        display: flex;
+        position: relative;
+        z-index: 20;
+        height: calc(100vh - 72px);
+        align-items: center;
+        justify-content: center;
+        background: red;
+        opacity: 0;
+        transform: translateX(100vw);
+        transition: 0.7s ease-in-out;  
+    }
+
+    .burger-open-menu.actif {
+        opacity: 1;
+        transform: translateX(0);
+        transition: 0.7s ease-in-out;  
+    }
 }
+
+
 
 /****** FOOTER MOBILE ******/
 @media(max-width: 768px) {
