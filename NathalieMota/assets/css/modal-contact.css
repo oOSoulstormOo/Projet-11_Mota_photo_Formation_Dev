@@ -1,0 +1,134 @@
+/* **************************************************** */
+/* ***** STYLE CSS CONCERNANT LA MODAL DE CONTACT ***** */
+/* **************************************************** */
+
+/** * conteneur principal ( avec fond d'ombre sur l'écran * **/
+.modal-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 30;
+    background-color: #000000d4;
+}
+
+.hidden {
+    display: none;
+}
+
+/* La modal */
+.the-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 597px;
+    height: 770px;
+    background-color: white;
+    border: 5px solid black;
+    overflow: hidden;
+} 
+
+/* conteneur et image du haut de la modal */
+.modal-title {
+    width: 886px;
+    height: 106px;
+}
+
+.modal-title img {
+    width: 886px;
+}
+
+/** * Tout ce qui concerne le formulaire * **/
+/* Conteneur du formulaire */
+.modal-info {
+    margin-top: 46px;
+    height: 563px;
+    width: 263px;
+}
+
+/* field */ /* init = formulaire valide / invalid = ce comprend dans son terme je pense haha / sent = après l'envoie du formulaire */
+.wpcf7-form.init p,
+.wpcf7-form.invalid p,
+.wpcf7-form.sent p {
+    margin-bottom: 23px;
+}
+
+.wpcf7-form.init label,
+.wpcf7-form.invalid label,
+.wpcf7-form.sent label {
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.wpcf7-form.init label span,
+.wpcf7-form.invalid label span,
+.wpcf7-form.sent label span {
+    display: flex;
+    flex-direction: column;
+}
+
+.wpcf7-form.init label span input[type='text'],
+.wpcf7-form.init label span input[type='email'],
+.wpcf7-form.invalid label span input[type='text'],
+.wpcf7-form.invalid label span input[type='email'],
+.wpcf7-form.sent label span input[type='text'],
+.wpcf7-form.sent label span input[type='email'] {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--color-form-gray);
+}
+
+.wpcf7-form.init label span textarea {
+    width: 100%;
+    height: 210px;
+    border-radius: 8px;
+    border: 1px solid var(--color-form-gray);
+}
+
+.wpcf7-form.invalid label span textarea,
+.wpcf7-form.sent label span textarea {
+    width: 100%;
+    height: 140px;
+    border-radius: 8px;
+    border: 1px solid var(--color-form-gray); 
+}
+
+/* Bouton */
+.wpcf7-form.init input[type='submit'],
+.wpcf7-form.invalid input[type='submit'],
+.wpcf7-form.sent input[type='submit'] {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--color-gray);
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-black);
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.wpcf7-form.init input[type='submit']:hover,
+.wpcf7-form.invalid input[type='submit']:hover,
+.wpcf7-form.sent input[type='submit']:hover {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    transition: 0.4s ease-in-out;
+}
+
+/* Info d'envoie quand le formulaire est invalide ou a été envoyer */
+.wpcf7 form .wpcf7-response-output {
+    margin: -40px;
+    width: 500px;
+    text-align: center;
+    position: relative;
+    left: -70px;
+}
