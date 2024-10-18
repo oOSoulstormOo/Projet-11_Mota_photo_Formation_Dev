@@ -1,4 +1,3 @@
-
 /**************************/
 /******    GLOBAL    ******/
 /**************************/
@@ -24,6 +23,7 @@
     --color-gray: #D8D8D8;
     --color-light-gray: #E5E5E5;
     --color-white: #FFFFFF;  
+    --color-form-gray: #B8BBC2;
 }
 
 /*
@@ -194,6 +194,9 @@ a
 }
 
 /* Menu de navigation mobile */
+.burger-open-menu {
+    display: none;
+}
 
 #menu-menu-principal-1 {
     display: flex;
@@ -301,9 +304,7 @@ a
         display: none;
     }
 
-    .menu-burger {
-        display: flex;
-    }
+
     
     /* Menu burger ( sous 768px il devient visible ) */
     .menu-burger {
