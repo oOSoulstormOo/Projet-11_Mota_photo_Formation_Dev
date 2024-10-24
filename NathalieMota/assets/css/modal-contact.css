@@ -1,6 +1,6 @@
-/* **************************************************** */
-/* ***** STYLE CSS CONCERNANT LA MODAL DE CONTACT ***** */
-/* **************************************************** */
+/* ***************************************************** */
+/* ***** STYLE CSS CONCERNANT LA MODALE DE CONTACT ***** */
+/* ***************************************************** */
 
 /** * conteneur principal ( avec fond d'ombre sur l'écran * **/
 .modal-overlay {
@@ -13,10 +13,15 @@
     top: 0;
     z-index: 30;
     background-color: #000000d4;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .hidden {
     display: none;
+}
+
+.reverse-animate {
+    animation: fadeInRemove 0.5s ease-in-out forwards;
 }
 
 /* La modal */
@@ -33,6 +38,7 @@
 
 /* conteneur et image du haut de la modal */
 .modal-title {
+    padding-top: 10px;
     width: 886px;
     height: 106px;
 }
@@ -60,7 +66,7 @@
 .wpcf7-form.invalid label,
 .wpcf7-form.sent label {
     font-family: 'Poppins';
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
 }
@@ -82,6 +88,7 @@
     height: 40px;
     border-radius: 8px;
     border: 1px solid var(--color-form-gray);
+    padding-left: 8px;
 }
 
 .wpcf7-form.init label span textarea {
@@ -89,6 +96,8 @@
     height: 210px;
     border-radius: 8px;
     border: 1px solid var(--color-form-gray);
+    padding-left: 8px;
+    padding-top: 10px;
 }
 
 .wpcf7-form.invalid label span textarea,
@@ -97,6 +106,8 @@
     height: 140px;
     border-radius: 8px;
     border: 1px solid var(--color-form-gray); 
+    padding-left: 8px;
+    padding-top: 10px;
 }
 
 /* Bouton */
@@ -126,9 +137,91 @@
 
 /* Info d'envoie quand le formulaire est invalide ou a été envoyer */
 .wpcf7 form .wpcf7-response-output {
-    margin: -40px;
-    width: 500px;
+    margin: 0;
+    padding: 0;
+    margin-top: -30px;
+    width: 100%;
     text-align: center;
-    position: relative;
-    left: -70px;
+}
+
+/* **************************************** */
+/* ***** MODALE DE CONTACT SUR MOBILE ***** */
+/* **************************************** */
+
+@media(max-width: 768px) {
+    /* La modal */
+    .the-modal {
+        width: 286px;
+        height: 583px;
+    } 
+
+    /* conteneur et image du haut de la modal */
+    .modal-title {
+        width: 459px;
+        height: 55px;
+    }
+
+    .modal-title img {
+        width: 459px;
+    }
+
+    /** * Tout ce qui concerne le formulaire * **/
+    /* Conteneur du formulaire */
+    .modal-info {
+        margin-top: 14px;
+        height: 472px;
+        width: 190px;
+    }
+
+    /* field */ /* init = formulaire valide / invalid = ce comprend dans son terme je pense haha / sent = après l'envoie du formulaire */
+    .wpcf7-form.init p,
+    .wpcf7-form.invalid p,
+    .wpcf7-form.sent p {
+        margin-bottom: 14px;
+    }
+
+    .wpcf7-form.init label span textarea {
+        width: 100%;
+        height: 149px;
+        border-radius: 8px;
+        border: 1px solid var(--color-form-gray);
+    }
+    
+    .wpcf7-form.invalid label span textarea,
+    .wpcf7-form.sent label span textarea {
+        width: 100%;
+        height: 80px;
+        border-radius: 8px;
+        border: 1px solid var(--color-form-gray); 
+    }
+
+    /* Info d'envoie quand le formulaire est invalide ou a été envoyer */
+    .wpcf7 form .wpcf7-response-output {
+        margin: 0;
+        padding: 0;
+        margin-top: -30px;
+        width: 100%;
+        text-align: center;
+        
+}
+}
+
+/**** KEYFRAME DE LA MODALE ****/
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInRemove {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
