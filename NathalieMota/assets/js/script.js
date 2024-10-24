@@ -20,26 +20,46 @@ document.addEventListener("DOMContentLoaded", function() {
 /**** MODALE DE CONTACT ****/
 // on cible le lien "Contact", l'ensemble de la pop-up et juste la pop-up
 document.addEventListener("DOMContentLoaded", ()=> {
-    const linkContact = document.getElementById('menu-item-68');
+    const linkContact = document.querySelectorAll('.menu-item-68');
     const popUp = document.querySelector('.modal-overlay');
     const modaleContact = document.querySelector('.the-modal');
+    
+// Réutilisation des variable precédente pour intéragir avec le menu-mobile
+    const line = document.querySelectorAll('.line');                 
+    const burgerMenu = document.querySelector('.burger-open-menu');
 
     // Fonction pour afficher ou masquer la pop-up
     function showOrNotModaleContact() {
         popUp.classList.toggle('hidden');
     }
 
-    // Afficher la pop-up quand on clique sur le lien "Contact"
-    linkContact.addEventListener('click', (event) => {
-        event.preventDefault();  // Empêche le comportement par défaut du lien
+    // Réutilisation de la Fonction pour afficher ou non le burger menu
+    function showOrNotBurgerMenu() {
+        line.forEach(n => n.classList.toggle('animated'));      
+        burgerMenu.classList.toggle('actif');                    
+    }
+
+    // Afficher la pop-up quand on clique sur les liens "Contact" / et remettre le menu mobile par défaut
+    linkContact.forEach(n => n.addEventListener('click', (event) => {
+                event.preventDefault();  // Empêche le comportement par défaut du lien
         showOrNotModaleContact();
-    });
+        showOrNotBurgerMenu();
+    }));
+
 
     // Fermer la pop-up si on clique en dehors de celle-ci
     document.addEventListener("click", (event) => {
-        if (!modaleContact.contains(event.target) && !linkContact.contains(event.target)) {
+
+        // Vérifier si on a cliqué à l'intérieur de la modale ou sur l'un des liens "Contact"
+        const clickedInsideLinkContact = Array.from(linkContact).some(n => n.contains(event.target));
+
+        if (!modaleContact.contains(event.target) && !clickedInsideLinkContact) {
             if (!popUp.classList.contains('hidden')) {
-                showOrNotModaleContact();
+                popUp.classList.add('reverse-animate');
+                setTimeout(() => {   
+                    showOrNotModaleContact();
+                    popUp.classList.remove('reverse-animate');
+                }, 600); // 600 millisecondes = 0.6 secondes / attend que l'animation se termine
             }
         }
     });
@@ -47,8 +67,13 @@ document.addEventListener("DOMContentLoaded", ()=> {
     // Fermer la pop-up après un envoi réussi du formulaire avec Contact Form 7, après 3 secondes
     document.addEventListener('wpcf7mailsent', (event) => {
         setTimeout(() => {
+            popUp.classList.add('reverse-animate');
+        }, 2500);// 2500 millisecondes = 2.5 secondes
+
+        setTimeout(() => {
             showOrNotModaleContact();
-        }, 2500);  // 2500 millisecondes = 2.5 secondes
+            popUp.classList.remove('reverse-animate');
+        }, 3000);  // 3000 millisecondes = 3 secondes / attend que l'animation se termine
     });
 
 });
