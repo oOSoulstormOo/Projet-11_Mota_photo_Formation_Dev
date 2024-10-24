@@ -7,6 +7,7 @@ function nathalie_mota_theme_enqueue_styles() {
 
 wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/assets/css/styles.css', array());
 wp_enqueue_style( 'contact-theme-styles', get_stylesheet_directory_uri() . '/assets/css/modal-contact.css', array());
+wp_enqueue_style( 'single-theme-styles', get_stylesheet_directory_uri() . '/assets/css/single-photo.css', array());
 }
 
 add_action('wp_enqueue_scripts', 'nathalie_mota_theme_enqueue_styles');
@@ -42,3 +43,6 @@ function register_my_menu(){
 
 add_action('after_setup_theme', 'register_my_menu');
 
+// Ajout de l'enregistrement des images
+
+add_theme_support('post-thumbnails');
