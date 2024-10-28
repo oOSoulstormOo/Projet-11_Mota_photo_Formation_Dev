@@ -18,13 +18,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 /**** MODALE DE CONTACT ****/
-// on cible le lien "Contact", l'ensemble de la pop-up et juste la pop-up
+// on cible le lien "Contact", l'ensemble de la pop-up et juste la pop-up, on cible aussi le bouton contact de la page des photos et l'input 'reference' du formulaire
 document.addEventListener("DOMContentLoaded", ()=> {
     const linkContact = document.querySelectorAll('.menu-item-68');
     const popUp = document.querySelector('.modal-overlay');
     const modaleContact = document.querySelector('.the-modal');
+    const btnContactPhoto = document.querySelector('.btn-single-photo-contact');
+    const refInput = document.querySelector('input[name="reference"]');
     
-// Réutilisation des variable precédente pour intéragir avec le menu-mobile
+    // Réutilisation des variable precédente pour intéragir avec le menu-mobile
     const line = document.querySelectorAll('.line');                 
     const burgerMenu = document.querySelector('.burger-open-menu');
 
@@ -46,6 +48,15 @@ document.addEventListener("DOMContentLoaded", ()=> {
         showOrNotBurgerMenu();
     }));
 
+    // Afficher la pop-up quand on clique sur le bouton contact de la page des photos
+    btnContactPhoto.addEventListener('click', () => {
+        showOrNotModaleContact();
+        // Récupère la valeur de la référence de la photo
+        const photoRef = btnContactPhoto.getAttribute('data-ref');
+        
+        // Remplit automatiquement le champ de référence dans la pop-up
+        refInput.value = photoRef;
+    });
 
     // Fermer la pop-up si on clique en dehors de celle-ci
     document.addEventListener("click", (event) => {
@@ -53,7 +64,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         // Vérifier si on a cliqué à l'intérieur de la modale ou sur l'un des liens "Contact"
         const clickedInsideLinkContact = Array.from(linkContact).some(n => n.contains(event.target));
 
-        if (!modaleContact.contains(event.target) && !clickedInsideLinkContact) {
+        if (!modaleContact.contains(event.target) && !clickedInsideLinkContact && !btnContactPhoto.contains(event.target)) {
             if (!popUp.classList.contains('hidden')) {
                 popUp.classList.add('reverse-animate');
                 setTimeout(() => {   
@@ -76,4 +87,44 @@ document.addEventListener("DOMContentLoaded", ()=> {
         }, 3000);  // 3000 millisecondes = 3 secondes / attend que l'animation se termine
     });
 
+});
+
+/**** NAVIGATION SUR LA PAGE SINGLE-PHOTO ****/
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Sélectionner les éléments des flèches et des miniatures
+    const prevArrow = document.querySelector('.arrow-prev');
+    const nextArrow = document.querySelector('.arrow-next');
+    const prevThumbnail = document.querySelector('.prev-thumbnail');
+    const nextThumbnail = document.querySelector('.next-thumbnail');
+
+    // Fonction pour afficher la miniature
+    function showThumbnail(thumbnail) {
+        thumbnail.style.opacity = '1';
+    }
+
+    // Fonction pour masquer la miniature
+    function hideThumbnail(thumbnail) {
+        thumbnail.style.opacity = '0';
+    }
+
+    // Si la flèche précédente et sa miniature existent
+    if (prevArrow && prevThumbnail) {
+        prevArrow.addEventListener('mouseover', function () {
+            showThumbnail(prevThumbnail);
+        });
+        prevArrow.addEventListener('mouseout', function () {
+            hideThumbnail(prevThumbnail);
+        });
+    }
+
+    // Si la flèche suivante et sa miniature existent
+    if (nextArrow && nextThumbnail) {
+        nextArrow.addEventListener('mouseover', function () {
+            showThumbnail(nextThumbnail);
+        });
+        nextArrow.addEventListener('mouseout', function () {
+            hideThumbnail(nextThumbnail);
+        });
+    }
 });
