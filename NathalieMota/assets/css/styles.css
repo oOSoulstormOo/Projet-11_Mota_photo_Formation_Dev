@@ -30,10 +30,10 @@
     BODY
 */
 
-/*body 
+.no-scroll
 {
     overflow: hidden;
-}*/
+}
 
 /*
     Police d'écriture
@@ -313,8 +313,9 @@ a
 
     .burger-open-menu {
         display: flex;
-        position: relative;
+        position: absolute;
         z-index: 20;
+        width: 100%;
         height: calc(100vh - 72px);
         align-items: center;
         justify-content: center;
