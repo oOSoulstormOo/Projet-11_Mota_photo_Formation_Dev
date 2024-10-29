@@ -107,6 +107,11 @@ get_header();
 		<div class="switch-post">
 			<div class="contenair-nav-arrow">
 
+				<!-- on affiche la miniature de la photo actuelle -->
+				<div class="miniature-thumbnail">
+					<img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>" alt="Miniature Actuelle">
+				</div>
+
 				<!-- Si il y a un post précédent, afficher la miniature -->
 				<?php if ( !empty( $prev_post ) ): ?>
 				<div class="prev-thumbnail">
@@ -156,32 +161,44 @@ get_header();
 <section class="similar-img">
 	<div class="segond-contenair">
 		<h3>Vous aimerez aussi</h3>
+
 		<div class="contenair-similar-img">
-					
+			<?php
+        		// Obtenir la catégorie de l'article courant 
+        
+        		$categorie = wp_get_post_terms($post_id, 'categorie', ['fields' => 'ids']);
+		
+				// Requête pour récupérer 2 articles partageant la même catégorie
+        		$args = [
+            		'post_type' => 'photo',
+            		'posts_per_page' => 2,
+            		'post__not_in' => [$post_id],
+            		'tax_query' => [
+                		[
+                    		'taxonomy' => 'categorie',
+                    		'field' => 'term_id',
+                    		'terms' => $categorie,
+                		],
+            		],
+        		];
+        		$related_photos = new WP_Query($args); // variable photo similaire = la requete Jquery prenant ce tableau
+
+				// Inclure le fichier pour chaque résultat
+				if ($related_photos->have_posts()) :
+					while ($related_photos->have_posts()) : $related_photos->the_post();
+						// Variables dynamiques pour `photo-block.php`
+						$image_url = get_the_post_thumbnail_url(get_the_ID());
+						$reference = get_field('reference'); 
+						$categorieArticle = wp_get_post_terms(get_the_ID(), 'categorie', ['fields' => 'names'])[0]; // Première catégorie si plusieurs
+						$post_id = get_the_ID();
+						include locate_template('template-parts/photo-block.php');
+					endwhile;
+					wp_reset_postdata();
+				endif;
+			?>
 		</div>
 	</div>
 </section>
- 
- 
- 
- 
- 
- 
- 
- 
-<!--  // Previous/next post navigation.
-	/*$twentytwentyone_next = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' );
-	$twentytwentyone_prev = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' );
-
-	$twentytwentyone_next_label     = esc_html__( 'Next post', 'twentytwentyone' );
-	$twentytwentyone_previous_label = esc_html__( 'Previous post', 'twentytwentyone' );
-
-	the_post_navigation(
-		array(
-			'next_text' => '<p class="meta-nav">' . $twentytwentyone_next_label . $twentytwentyone_next . '</p><p class="post-title">%title</p>',
-			'prev_text' => '<p class="meta-nav">' . $twentytwentyone_prev . $twentytwentyone_previous_label . '</p><p class="post-title">%title</p>',
-		)
-	);*/ -->
 
 <?php endwhile; // End of the loop.
 
