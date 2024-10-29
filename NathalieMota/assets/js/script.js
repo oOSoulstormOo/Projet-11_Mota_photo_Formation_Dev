@@ -9,7 +9,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // et le burger menu obtient la classe qui le fait apparaître
     function showOrNotBurgerMenu() {
         line.forEach(n => n.classList.toggle('animated'));      
-        burgerMenu.classList.toggle('actif');                    
+        burgerMenu.classList.toggle('actif'); 
+        // Ajoute ou retire la classe `no-scroll` sur le body
+        if (burgerMenu.classList.contains('actif')) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }                   
     }
 
     // Si on clic sur le menu on joue la fonction
@@ -38,7 +44,13 @@ document.addEventListener("DOMContentLoaded", ()=> {
     // Réutilisation de la Fonction pour afficher ou non le burger menu
     function showOrNotBurgerMenu() {
         line.forEach(n => n.classList.toggle('animated'));      
-        burgerMenu.classList.toggle('actif');                    
+        burgerMenu.classList.toggle('actif');
+        // Ajoute ou retire la classe `no-scroll` sur le body
+    if (burgerMenu.classList.contains('active')) {
+        document.body.classList.add('no-scroll');
+    } else {
+        document.body.classList.remove('no-scroll');
+    }                    
     }
 
     // Afficher la pop-up quand on clique sur les liens "Contact" / et remettre le menu mobile par défaut
