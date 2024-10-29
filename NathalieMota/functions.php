@@ -8,6 +8,7 @@ function nathalie_mota_theme_enqueue_styles() {
 wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/assets/css/styles.css', array());
 wp_enqueue_style( 'contact-theme-styles', get_stylesheet_directory_uri() . '/assets/css/modal-contact.css', array());
 wp_enqueue_style( 'single-theme-styles', get_stylesheet_directory_uri() . '/assets/css/single-photo.css', array());
+wp_enqueue_style(' photo-block-theme-styles', get_stylesheet_directory_uri('') . '/assets/css/photo-block.css', array());
 }
 
 add_action('wp_enqueue_scripts', 'nathalie_mota_theme_enqueue_styles');
