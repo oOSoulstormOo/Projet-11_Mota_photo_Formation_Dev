@@ -9,6 +9,7 @@ wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/assets/css/st
 wp_enqueue_style( 'contact-theme-styles', get_stylesheet_directory_uri() . '/assets/css/modal-contact.css', array());
 wp_enqueue_style( 'single-theme-styles', get_stylesheet_directory_uri() . '/assets/css/single-photo.css', array());
 wp_enqueue_style(' photo-block-theme-styles', get_stylesheet_directory_uri('') . '/assets/css/photo-block.css', array());
+wp_enqueue_style(' home-content-theme-styles', get_stylesheet_directory_uri('') . '/assets/css/home-content.css', array());
 }
 
 add_action('wp_enqueue_scripts', 'nathalie_mota_theme_enqueue_styles');
@@ -17,9 +18,11 @@ add_action('wp_enqueue_scripts', 'nathalie_mota_theme_enqueue_styles');
 
 function nathalie_mota_theme_enqueue_scripts() {
 
-// Chargement du script de la modale ( script.js )
+// Chargement du script de la modale, du burger-menu, et de la nav de la page single-photo  ( script.js )
 wp_enqueue_script('theme-script', get_template_directory_uri() . '/assets/js/script.js', array());
 
+// Chargement de script concernant les filtres de la page d'accueil (filter.js)
+wp_enqueue_script('theme-filter-script', get_template_directory_uri() . '/assets/js/filter.js', array());
 }
 
 add_action('wp_enqueue_scripts', 'nathalie_mota_theme_enqueue_scripts');
