@@ -22,10 +22,11 @@
 .main-contenair {
     display: flex;
     flex-direction: row;
+    width: 100%;
     height: calc(100vh - 198px);
     gap: 20px;
-    margin-left: 146px;
-    margin-right: 146px;
+    padding-left: 146px;
+    padding-right: 146px;
 }
 
 /**
