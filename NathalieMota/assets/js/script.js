@@ -60,15 +60,18 @@ document.addEventListener("DOMContentLoaded", ()=> {
         showOrNotBurgerMenu();
     }));
 
-    // Afficher la pop-up quand on clique sur le bouton contact de la page des photos
-    btnContactPhoto.addEventListener('click', () => {
-        showOrNotModaleContact();
-        // Récupère la valeur de la référence de la photo
-        const photoRef = btnContactPhoto.getAttribute('data-ref');
-        
-        // Remplit automatiquement le champ de référence dans la pop-up
-        refInput.value = photoRef;
-    });
+    // Vérifie si le bouton existe avant d'ajouter l'événement
+    if (btnContactPhoto) { 
+        // Afficher la pop-up quand on clique sur le bouton contact de la page des photos
+        btnContactPhoto.addEventListener('click', () => {
+            showOrNotModaleContact();
+            // Récupère la valeur de la référence de la photo
+            const photoRef = btnContactPhoto.getAttribute('data-ref');
+            // Remplit automatiquement le champ de référence dans la pop-up
+            if (refInput) refInput.value = photoRef; // Remplit le champ de référence
+        });
+    }
+    
 
     // Fermer la pop-up si on clique en dehors de celle-ci
     document.addEventListener("click", (event) => {
@@ -76,7 +79,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         // Vérifier si on a cliqué à l'intérieur de la modale ou sur l'un des liens "Contact"
         const clickedInsideLinkContact = Array.from(linkContact).some(n => n.contains(event.target));
 
-        if (!modaleContact.contains(event.target) && !clickedInsideLinkContact && !btnContactPhoto.contains(event.target)) {
+        if (!modaleContact.contains(event.target) && !clickedInsideLinkContact && (!btnContactPhoto || !btnContactPhoto.contains(event.target))) {
             if (!popUp.classList.contains('hidden')) {
                 popUp.classList.add('reverse-animate');
                 setTimeout(() => {   
