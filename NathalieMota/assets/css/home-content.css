@@ -1,0 +1,198 @@
+/* **************************************************************** */
+/* ***** STYLE CSS CONCERNANT LE CONTENU DE LA PAGE D'ACCUEIL ***** */
+/* **************************************************************** */
+
+/**** SECTION AVEC LE HERO HEADER ****/
+.hero-header {
+    width: 100%;
+    height: 962px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+/***
+       CONTENEUR IMAGE
+*/
+.hero-img {
+    display: flex;
+    width: 1440px;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/**
+       CONTENEUR DU TITRE
+*/
+.hero-content {
+    position: absolute;
+}
+
+
+/*
+       TITRE
+*/
+.hero-content h1 {
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+}
+
+/* ****************************************** */
+/**** SECTION DES FILTRES ET DE LA GALERIE ****/
+/* ****************************************** */
+
+/**** SECTION FILTRES ****/
+.filter-section {
+    display: flex;
+    width: 100%;
+}
+
+.filter-menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 146px;
+    margin-right: 146px;
+}
+
+.filter-left {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Bouton avec flèche sur le bord droit */
+.filter-button {
+    background: #fff;
+    border: 1px solid var(--color-gray);
+    border-radius: 8px;
+    padding: 11px 18px;
+    font-size: 12px;
+    font-family: 'Poppins';
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 260px;
+    transition: border-color 0.3s ease;
+}
+
+/* Flèche sur le bord droit du bouton */
+.filter-button::after {
+    content: url('../image/Icon-bas.png'); 
+    transition: transform 0.3s ease;
+}
+
+/* Bouton actif lors de l'ouverture du menu */
+.filter-button.active {
+    border-color: var(--color-blue);
+    border-radius: 8px 8px 0px 0px;
+}
+
+/* Changement de la flèche lorsqu'elle est active (orientation vers le haut) */
+.filter-button.active::after {
+    transform: rotate(180deg);
+}
+
+/* Liste déroulante */
+.filter-list {
+    display: none;
+    flex-direction: column;
+    background: white;
+    border-radius: 0px 0px 5px 5px;
+    list-style: none;
+    padding: 0;
+    padding-top: 50px;
+    font-family: 'Poppins';
+    font-size: 12px;
+}
+
+.filter-list.filter-active {
+    display: flex;
+    }
+
+/* Options de la liste */
+.filter-option {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+/* Effet de dégradé au survol */
+.filter-option:hover {
+    animation: gradientColor 0.6s linear forwards;
+}
+
+/* Animation pour les options */
+@keyframes gradientColor {
+    0% {
+        background-color: var(--color-white);
+        color: var(--color-black);
+    }
+    33% {
+        background-color: var(--color-light-red);
+    }
+    66% {
+        background-color: var(--color-red); 
+    }
+    100% {
+        background-color: var(--color-dark-red);
+        color: var(--color-white);
+    }
+}
+
+/**** SECTION GALERIE ****/
+.gallery-section {
+    width: 100%;
+}
+
+.gallery-contenair {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 146px;
+    margin-right: 146px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+/* bouuton "Charger Plus" en fin de galerie */
+.button-gallery {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.btn-chargerPlus {
+    width: 272px;
+    height: 50px;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--color-gray);
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-black);
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.btn-chargerPlus:hover {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    transition: 0.4s ease-in-out;
+}
