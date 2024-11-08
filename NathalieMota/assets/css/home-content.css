@@ -5,7 +5,7 @@
 /**** SECTION AVEC LE HERO HEADER ****/
 .hero-header {
     width: 100%;
-    height: 962px;
+    max-height: 962px;
     display: flex;
     justify-content: center;
     margin-bottom: 80px;
@@ -195,4 +195,130 @@
     background-color: var(--color-black);
     color: var(--color-white);
     transition: 0.4s ease-in-out;
+}
+
+/***************/
+/*** MOBILE ****/
+/***************/
+
+@media (max-width: 1162px ) {
+ /**** SECTION AVEC LE HERO HEADER ****/
+    .hero-header {
+        max-height: 782px;
+    }
+
+    /*
+          TITRE
+    */
+    .hero-content h1 {
+        font-size: 72px
+    }
+    
+    /**** SECTION FILTRES ****/
+    .filter-menu {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0;
+        margin-right: 0;
+        gap: 30px;
+    }
+
+    .filter-left {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .filter-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 967px ) {
+ /**** SECTION AVEC LE HERO HEADER ****/
+    .hero-header {
+        max-height: 528px;
+        margin-bottom: 60px;
+    }
+
+    /*
+           TITRE
+    */
+    .hero-content h1 {
+        font-size: 58px
+    }
+
+    /**** SECTION GALERIE ****/
+    .gallery-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery-contenair {
+        width: 50%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 0px;
+        margin-right: 0px;
+        display: grid;
+        grid-template-columns: none;
+        grid-gap: 20px;
+    }
+}
+
+@media (max-width: 768px ) {
+ /**** SECTION AVEC LE HERO HEADER ****/
+    .hero-header {
+        max-height: 380px;
+        margin-bottom: 40px;
+    }
+
+    /*
+           TITRE
+    */
+    .hero-content h1 {
+        font-size: 38px;
+        -webkit-text-stroke: 1px white;
+    }
+
+}
+
+@media (max-width: 480px ) {
+ /**** SECTION AVEC LE HERO HEADER ****/
+    .hero-header {
+        max-height: 253px;
+        margin-bottom: 30px;
+    }
+   
+    /*
+          TITRE
+    */
+    .hero-content h1 {
+       font-size: 27px;
+       -webkit-text-stroke: 1px white;
+    }
+
+    /**** SECTION FILTRES ****/
+    .filter-menu {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0;
+        margin-right: 0;
+        gap: 8px;
+    }
+
+    .filter-left {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /**** SECTION GALERIE ****/
+    .gallery-contenair {
+        width: 318px;
+    }
 }
