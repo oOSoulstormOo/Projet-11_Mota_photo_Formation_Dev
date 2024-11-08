@@ -1,3 +1,9 @@
+<?php
+/* ************************************* */
+/* **** TEMPLATE POUR LE BLOC PHOTO **** */
+/* ************************************* */
+?>
+
 <div class="photo-block">
     <div class="photo-image">
         <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>">

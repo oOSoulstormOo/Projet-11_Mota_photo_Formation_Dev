@@ -1,3 +1,9 @@
+<?php
+/* ******************************************************** */
+/* **** TEMPLATE POUR LES FILTRES DE LA PAGE D'ACCUEIL **** */
+/* ******************************************************** */
+?>
+
 <section class="filter-section">
     <div class="filter-menu">
         <div class="filter-left">
