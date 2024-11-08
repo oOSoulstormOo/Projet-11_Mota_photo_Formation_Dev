@@ -1,4 +1,7 @@
+/*********************/
 /**** MENU BURGER ****/
+/*********************/
+
 document.addEventListener("DOMContentLoaded", function() {
     // On cible le burger-menu, les balise span contenant les lignes et la page du menu ouvert
     const menu = document.querySelector('.menu-burger');            
@@ -22,8 +25,10 @@ document.addEventListener("DOMContentLoaded", function() {
     menu.addEventListener('click', showOrNotBurgerMenu)                        
 });
 
-
+/***************************/
 /**** MODALE DE CONTACT ****/
+/***************************/
+
 // on cible le lien "Contact", l'ensemble de la pop-up et juste la pop-up, on cible aussi le bouton contact de la page des photos et l'input 'reference' du formulaire
 document.addEventListener("DOMContentLoaded", ()=> {
     const linkContact = document.querySelectorAll('.menu-item-68');
@@ -104,7 +109,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
 });
 
+/*********************************************/
 /**** NAVIGATION SUR LA PAGE SINGLE-PHOTO ****/
+/*********************************************/
 
 document.addEventListener('DOMContentLoaded', function () {
     // Sélectionner les éléments des flèches et des miniatures
@@ -143,3 +150,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+/*********************************/
+/**** SCRIPT POUR LA LIGHTBOX ****/
+/*********************************/
+
