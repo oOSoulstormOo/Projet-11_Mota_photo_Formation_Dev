@@ -13,7 +13,7 @@
                     ));
                     // Affiche chaque terme comme option
                     foreach ($categories as $category) {
-                        echo '<li class="filter-option" data-value="' . esc_attr($category->slug) . '">' . esc_html($category->name) . '</li>';
+                        echo '<li class="filter-option" data-cat="' . esc_attr($category->slug) . '">' . esc_html($category->name) . '</li>';
                     }
                     ?>
                 </ul>
@@ -30,7 +30,7 @@
                         'hide_empty' => false,
                     ));
                     foreach ($formats as $format) {
-                        echo '<li class="filter-option" data-value="' . esc_attr($format->slug) . '">' . esc_html($format->name) . '</li>';
+                        echo '<li class="filter-option" data-format="' . esc_attr($format->slug) . '">' . esc_html($format->name) . '</li>';
                     }
                     ?>
                 </ul>
@@ -40,8 +40,8 @@
         <div class="filter-item" id="sort-menu">
             <button class="filter-button">Trier par<span class="chevron"></span></button>
             <ul class="filter-list">
-                <li class="filter-option" data-value="DESC">A partir des plus récentes</li>
-                <li class="filter-option" data-value="ASC">A partir des plus anciennes</li>
+                <li class="filter-option" data-date="DESC">A partir des plus récentes</li>
+                <li class="filter-option" data-date="ASC">A partir des plus anciennes</li>
             </ul>
         </div>
     </div>
