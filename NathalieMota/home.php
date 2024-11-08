@@ -58,40 +58,29 @@
             'orderby' => 'date',
             'order' => 'ASC',
             'paged' => 1,
-            /*'tax_query' => [
-                [
-                    'taxonomy' => 'categorie', // il faudra surement une tax query avec relation pour reaficher selon les bouton qui seront choisi, plutôt que de refaire plein de requetes
-                    'field' => 'term_id',
-                    'terms' => $categorie,
-                ],
-            ],*/
         ];
         $gallery_photos = new WP_Query($gallery_args);
 
         // Inclure le fichier pour chaque résultat
-        if ($gallery_photos->have_posts()) :
-            while ($gallery_photos->have_posts()) : $gallery_photos->the_post();
+        if ($gallery_photos->have_posts()) {
+            while ($gallery_photos->have_posts()) {
+                $gallery_photos->the_post();
                 // Variables dynamiques pour `photo-block.php`
                 $image_url = get_the_post_thumbnail_url(get_the_ID());
                 $reference = get_field('reference'); 
                 $categorieArticle = wp_get_post_terms(get_the_ID(), 'categorie', ['fields' => 'names'])[0]; // Première catégorie si plusieurs
                 $post_id = get_the_ID();
                 include locate_template('template-parts/photo-block.php');
-            endwhile;
+            };
             wp_reset_postdata();
-        endif;
+        };
     ?>
+    
     </div>
     <div class="button-gallery">
-            <button class="btn-chargerPlus">Charger plus</button>
+            <button id="load-more" class="btn-chargerPlus">Charger plus</button>
     </div>
 </section>
-
-
-
-
-
-
 
 <!-- Appel du footer sur la page d'accueil -->
 <?php get_footer(); ?>
