@@ -38,6 +38,9 @@ wp_localize_script('ajax-script', 'ajax_vars', array(
 ));
 };
 
+// Chargement de la lightbox
+wp_enqueue_script('lightbox-script', get_template_directory_uri() . '/assets/js/lightbox.js', array());
+
 add_action('wp_enqueue_scripts', 'nathalie_mota_theme_enqueue_scripts');
 
 // Function pour ajouter un logo à la personnalisation
@@ -125,7 +128,7 @@ function filter_photos() {
     } else {
         $response['posts_html'] = '<p>Aucun article trouvé.</p>';
     }
-
+    
     wp_reset_postdata();
     wp_send_json($response); // Envoyer la réponse en JSON
     wp_die();
