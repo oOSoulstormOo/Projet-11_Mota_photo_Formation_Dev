@@ -52,6 +52,9 @@
                     } else {
                         $loadMoreButton.hide();
                     }
+
+                     // Réinitialiser les événements de lightbox
+                    onPostsUpdated();
                 },
                 error: function () {
                     console.log("Erreur lors du chargement des photos supplémentaires.");
