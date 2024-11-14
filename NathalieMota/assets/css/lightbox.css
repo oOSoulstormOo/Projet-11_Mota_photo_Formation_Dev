@@ -1,0 +1,252 @@
+/* ******************************************** */
+/* ***** STYLE CSS CONCERNANT LA LIGHTBOX ***** */
+/* ******************************************** */
+
+/***** CONTENEUR PRINCIPAL ( avec fond d'ombre sur l'écran *****/
+.lightbox-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 30;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.hidden-lightbox {
+    display: none;
+}
+
+.reverse-animate {
+    animation: fadeInRemove 0.5s ease-in-out forwards;
+}
+
+/**** CONTENEUR DE LA LIGHTBOX ****/
+.lightbox-container {
+    width: 978px;
+    height: 857px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bouton fermer */
+.lightbox-close {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: scale 0.4s ease;
+}
+
+.lightbox-close:hover {
+
+    transform: scale(1.2);
+}
+
+/*** CONTENU DE LA LIGHTBOX ***/
+.lightbox-content {
+    position: relative;
+}
+
+.lightbox-content img {
+    max-width: 564px;
+    max-height: 495px;
+    object-fit: contain;
+}
+
+/* 
+    BLOC REFERENCE
+*/
+.overlay-ref-lightbox {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    color: var(--color-white);
+    text-transform: uppercase;
+    font-family: 'Poppins';
+    font-size: 14px;
+}
+
+/* 
+    BLOC CATEGORIE
+*/
+.overlay-cat-lightbox {
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    color: var(--color-white);
+    text-transform: uppercase;
+    font-family: 'Space-mono';
+    font-size: 14px;
+}
+
+/** NAVIGATION LIGHTBOX **/
+.next {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: scale(1);
+    transition: scale 0.4s ease;
+}
+
+.prev {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: scale(1);
+    transition: scale 0.4s ease;
+}
+
+.next:hover, 
+.prev:hover {
+    transform: scale(1.1);
+}
+
+.next a,
+.prev a {
+    display: flex;
+    gap: 10px;
+    font-family: 'space-mono';
+    font-size: 12px;
+    color: var(--color-white);
+}
+
+.prev a img {
+    transform: rotate(180deg);
+}
+
+/************************/
+/*** LIGHTBOX MOBILE ****/
+/************************/
+
+@media (max-width: 967px ) {
+    /**** CONTENEUR DE LA LIGHTBOX ****/
+    .lightbox-container {
+        width: 720px;
+        height: 680px;
+    }
+
+    /* Bouton fermer */
+    .lightbox-close {
+        top: 0px;
+        right: 25px;
+    }
+
+    /*** CONTENU DE LA LIGHTBOX ***/
+    .lightbox-content img {
+        max-width: 530px;
+        max-height: 460px;
+        object-fit: contain;
+    }
+
+    /** NAVIGATION LIGHTBOX **/
+    .next {
+        right: 30px;
+    }
+
+    .prev {
+        left: 30px;
+    }
+
+    .next p,
+    .prev p {
+        display: none;
+    }
+}
+
+@media (max-width: 768px ) {
+    /**** CONTENEUR DE LA LIGHTBOX ****/
+    .lightbox-container {
+        width: 460px;
+        height: 565px;
+    }
+
+    /* Bouton fermer */
+    .lightbox-close {
+        top: 35px;
+        right: 15px;
+    }
+
+    /*** CONTENU DE LA LIGHTBOX ***/
+    .lightbox-content img {
+        max-width: 360px;
+        max-height: 380px;
+        object-fit: contain;
+    }
+
+    /** NAVIGATION LIGHTBOX **/
+    .next {
+        right: 7px;
+    }
+
+    .prev {
+        left: 7px;
+    }
+}
+
+@media (max-width: 480px ) {
+    /**** CONTENEUR DE LA LIGHTBOX ****/
+    .lightbox-container {
+        width: 95%;
+        height: 465px;
+    }
+
+    /* Bouton fermer */
+    .lightbox-close {
+        top: 35px;
+        right: 15px;
+    }
+
+    .lightbox-close img {
+        height: 18px;
+        width: 18px;
+    }
+
+    /*** CONTENU DE LA LIGHTBOX ***/
+    .lightbox-content {
+        display: flex;
+        justify-content: center;
+    }
+
+    .lightbox-content img {
+        max-width: 80%;
+        max-height: 380px;
+        object-fit: contain;
+    }
+
+    /* 
+    BLOC REFERENCE
+    */
+    .overlay-ref-lightbox {
+        left: 10%;
+    }
+
+    /* 
+        BLOC CATEGORIE
+    */
+    .overlay-cat-lightbox {
+        right: 10%;
+    }
+
+    /** NAVIGATION LIGHTBOX **/
+    .next {
+        right: -2px;
+    }
+
+    .prev {
+        left: -2px;
+    }
+
+    .next img,
+    .prev img {
+        width: 24px;
+    }
+}
