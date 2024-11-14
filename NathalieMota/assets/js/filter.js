@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 button.classList.add('active');
                 filterList.classList.add('filter-active');
             }
+
         });
 
         // Gestion de la sélection d'une option
