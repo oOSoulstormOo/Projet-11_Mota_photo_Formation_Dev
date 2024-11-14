@@ -6,7 +6,7 @@
 
 <div class="photo-block">
     <div class="photo-image">
-        <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>">
+        <img class="image-block" src="<?php echo esc_url($image_url); ?>" data-src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>">
     </div>
     <div class="photo-overlay">
         <div class="overlay-content">
