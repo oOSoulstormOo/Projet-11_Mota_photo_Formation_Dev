@@ -151,7 +151,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-/*********************************/
-/**** SCRIPT POUR LA LIGHTBOX ****/
-/*********************************/
+
 
