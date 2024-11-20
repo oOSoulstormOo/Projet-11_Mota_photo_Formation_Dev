@@ -267,6 +267,21 @@ a
     text-transform: uppercase;
 }
 
+/****** Page de confidentialité ******/
+h1.wp-block-heading {
+    font-size: 52px;
+    margin-bottom: 40px;
+}
+
+h2.wp-block-heading {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+p.has-text-align-center {
+    margin: 0 30px 30px 30px;
+}
+
 /****** MOBILE ******/
 /***** HEADER MOBILE ******/
 @media(max-width: 967px) {
