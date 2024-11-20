@@ -36,6 +36,10 @@
     overflow: hidden;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 /*
     Police d'écriture
 */
