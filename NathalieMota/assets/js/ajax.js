@@ -35,7 +35,8 @@
                     page: page,
                     cat: cat,
                     format: format,
-                    date: date
+                    date: date,
+                    nonce: ajax_vars.ajax_nonce,
                 },
                 success: function (response) {
                     if (page === 1) {

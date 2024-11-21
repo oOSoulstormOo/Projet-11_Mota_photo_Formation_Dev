@@ -34,7 +34,8 @@ wp_enqueue_script('ajax-script', get_template_directory_uri() . '/assets/js/ajax
     
 // Passer la variable `ajax_url` au script pour l’URL AJAX de WordPress
 wp_localize_script('ajax-script', 'ajax_vars', array(
-    'ajax_url' => admin_url('admin-ajax.php')
+    'ajax_url' => admin_url('admin-ajax.php'),
+    'ajax_nonce' => wp_create_nonce('filter_photos_nonce'),
 ));
 };
 
@@ -75,6 +76,9 @@ add_theme_support('post-thumbnails');
 // Et la gestion des filtres sur la page d'accueil
 
 function filter_photos() {
+    // On vérifie le nonce pour sécuriser la requête
+    check_ajax_referer('filter_photos_nonce', 'nonce');
+
     // Récupère les paramètres de l'AJAX
     $cat = isset($_POST['cat']) ? sanitize_text_field($_POST['cat']) : '';              // Sanitize_text_field et intval serve a securiser et assainir les donnée récuperer 
     $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';     // Merci Chati-G
